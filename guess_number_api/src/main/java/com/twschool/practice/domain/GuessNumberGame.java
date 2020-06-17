@@ -10,6 +10,8 @@ public class GuessNumberGame {
     private int MAX_TRY_TIMES = 6;
     private int leftTryTimes = MAX_TRY_TIMES;
     private RandomAnswerGenerator randomAnswerGenerator;
+    private int integrate = 0;
+    private int count = 0;
 
 
     public GuessNumberGame(RandomAnswerGenerator randomAnswerGenerator) {
@@ -21,6 +23,19 @@ public class GuessNumberGame {
         String result = answer.check(userAnswerNumbers);
         decreaseTryTimes();
         modifyStatus(result);
+        if("4A0B".equals(result)){
+            integrate += 3;
+            count ++;
+            if(count == 3){
+                integrate += 2;
+            }
+            if(count == 5){
+                integrate += 3;
+            }
+        }else {
+            integrate -= 3;
+            count = 0;
+        }
         return result;
     }
 
