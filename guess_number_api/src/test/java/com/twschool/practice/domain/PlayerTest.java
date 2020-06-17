@@ -27,6 +27,41 @@ public class PlayerTest {
     }
 
     @Test
+    public void should_return_11_when_win_Three_Times() {
+        Answer answer = new Answer(Arrays.asList("1", "2", "3", "4"));
+        RandomAnswerGenerator randomAnswerGenerator = Mockito.mock(RandomAnswerGenerator.class);
+        Mockito.when(randomAnswerGenerator.generateAnswer()).thenReturn(answer);
+        guessNumberGame = new GuessNumberGame(randomAnswerGenerator);
+        Player player = new Player("1","zhang",guessNumberGame);
+        player.playGame(Arrays.asList("1", "2", "3", "4"));
+        player.playGame(Arrays.asList("1", "2", "3", "4"));
+        player.playGame(Arrays.asList("1", "2", "3", "4"));
+
+        String grade = String.valueOf(guessNumberGame.getGrade());
+
+        Assert.assertEquals("11", grade);
+    }
+
+    @Test
+    public void should_return_20_when_win_Five_Times() {
+        Answer answer = new Answer(Arrays.asList("1", "2", "3", "4"));
+        RandomAnswerGenerator randomAnswerGenerator = Mockito.mock(RandomAnswerGenerator.class);
+        Mockito.when(randomAnswerGenerator.generateAnswer()).thenReturn(answer);
+        guessNumberGame = new GuessNumberGame(randomAnswerGenerator);
+        Player player = new Player("1","zhang",guessNumberGame);
+        player.playGame(Arrays.asList("1", "2", "3", "4"));
+        player.playGame(Arrays.asList("1", "2", "3", "4"));
+        player.playGame(Arrays.asList("1", "2", "3", "4"));
+        player.playGame(Arrays.asList("1", "2", "3", "4"));
+        player.playGame(Arrays.asList("1", "2", "3", "4"));
+
+        String grade = String.valueOf(guessNumberGame.getGrade());
+
+        Assert.assertEquals("20", grade);
+    }
+
+
+    @Test
     public void should_return_3_when_win_twice_given_two_player() {
         Answer answer = new Answer(Arrays.asList("1", "2", "3", "4"));
         RandomAnswerGenerator randomAnswerGenerator = Mockito.mock(RandomAnswerGenerator.class);
