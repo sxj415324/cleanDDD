@@ -57,4 +57,7 @@ public class GuessNumberGame {
     public GameStatus getStatus() {
         return status;
     }
+    public int getGrade() {
+        return integrate;
+    }
 }
